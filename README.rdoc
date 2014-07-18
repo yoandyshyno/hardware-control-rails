@@ -1,5 +1,15 @@
 == README
 
+This application started as a small project to get some task done in our lab.
+Currently is just a basic app that list workstations, graphic cards, monitors and
+Operating systems distributions in use. These can be integrated in a review or
+report that keeps change done in the parts of the Workstation.
+
+Then it can generate a PDF file of one sheet per workstation, every row denote the
+state of a Workstation in a specific date, so you can keep track of it. 
+
+
+
 This README would normally document whatever steps are necessary to get the
 application up and running.
 
