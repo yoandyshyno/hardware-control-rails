@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  codename: MyString
+  version: MyString
+  support_expiration_date: 2014-06-11
+  remarks: MyString
+
+two:
+  codename: MyString
+  version: MyString
+  support_expiration_date: 2014-06-11
+  remarks: MyString

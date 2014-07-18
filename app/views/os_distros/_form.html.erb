@@ -1,0 +1,32 @@
+<%= form_for @os_distro, :html => { :class => 'form-horizontal' } do |f| %>
+  <div class="control-group">
+    <%= f.label :codename, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :codename, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :version, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :version, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :support_expiration_date, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :support_expiration_date, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :remarks, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_area :remarks, :class => 'text_area' %>
+    </div>
+  </div>
+
+  <div class="form-actions">
+    <%= f.submit nil, :class => 'btn btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                os_distros_path, :class => 'btn' %>
+  </div>
+<% end %>

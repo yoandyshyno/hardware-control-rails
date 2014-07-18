@@ -1,0 +1,66 @@
+<%- model_class = Review -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
+</div>
+
+<% for workstation in @workstations do -%>
+<hr />
+<dl class="dl-horizontal">
+  <dt><strong><%= model_class.human_attribute_name(:name) %>:</strong></dt>
+  <dd><%= workstation.name %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:user) %>:</strong></dt>
+  <dd><%= workstation.user %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:ip) %>:</strong></dt>
+  <dd><%= workstation.ip %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:mac) %>:</strong></dt>
+  <dd><%= workstation.mac %></dd>
+</dl>
+<hr />
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th><%= model_class.human_attribute_name(:id) %></th>
+      <th><%= model_class.human_attribute_name(:workstation_id) %></th>
+      <th><%= model_class.human_attribute_name(:monitor1) %></th>
+      <th><%= model_class.human_attribute_name(:monitor2) %></th>
+      <th><%= model_class.human_attribute_name(:monitor3) %></th>
+      <th><%= model_class.human_attribute_name(:hardware) %></th>
+      <th><%= model_class.human_attribute_name(:graphic_card_id) %></th>
+      <th><%= model_class.human_attribute_name(:os_distro_id) %></th>
+      <th><%= model_class.human_attribute_name(:remarks) %></th>
+      <th><%= model_class.human_attribute_name(:created_at) %></th>
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @reviews.where("workstation_id = ?", workstation.id).each do |review| %>
+      <tr>
+        <td><%= link_to review.id, review_path(review) %></td>
+        <td><%= link_to @workstations.find(review.workstation_id).name, controller: "workstations", action: "show", id: review.workstation_id %></td>
+        <td><%= link_to @monitors.find(review.monitor1).brand, controller: "workstation_monitors", action: "show", id: review.monitor1 %></td>
+        <td><%= link_to @monitors.find(review.monitor2).brand, controller: "workstation_monitors", action: "show", id: review.monitor2 %></td>
+        <td><%= link_to @monitors.find(review.monitor3).brand, controller: "workstation_monitors", action: "show", id: review.monitor3 %></td>
+        <td><%= review.hardware %></td>
+        <td><%= link_to @graphic_cards.find(review.graphic_card_id).model, controller: "graphic_cards", action: "show", id: review.graphic_card_id %></td>
+        <td><%= @os_distros.find(review.os_distro_id).version %></td>
+        <td><%= review.remarks %></td>
+        <td><%= review.created_at.to_formatted_s(:short)  %></td>
+        <td>
+          <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                      edit_review_path(review), :class => 'btn btn-mini' %>
+          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                      review_path(review),
+                      :method => :delete,
+                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                      :class => 'btn btn-mini btn-danger' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<%= link_to t('.new', :default => t("helpers.links.new")),
+            new_review_path,
+            :class => 'btn btn-primary' %>
+<%= link_to 'View or Download PDF', { controller: 'reviews', action: 'index', format: 'pdf'}, class: 'btn btn-info', target: '_blank' %>
+<br /><br />
+<% end -%>

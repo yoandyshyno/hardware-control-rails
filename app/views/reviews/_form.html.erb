@@ -1,0 +1,62 @@
+<%= form_for @review, :html => { :class => 'form-horizontal' } do |f| %>
+  <div class="control-group">
+    <%= f.label :workstation_id, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.collection_select( :workstation_id, Workstation.all, :id, :name, 
+      {:prompt => 'Please select a Worstation'}) %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :monitor1, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.collection_select( :monitor1, WorkstationMonitor.all, :id, :brand,
+      {:prompt => 'Please select a Monitor'}) %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :monitor2, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.collection_select( :monitor2, WorkstationMonitor.all, :id, :brand,
+      {:prompt => 'Please select a 2nd Monitor'}) %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :monitor3, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.collection_select( :monitor3, WorkstationMonitor.all, :id, :brand, 
+      {:prompt => 'Is there a 3rd Monitor ?', :include_blank => true}) %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :hardware, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_area :hardware, :class => 'text_area' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :graphic_card_id, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.collection_select( :graphic_card_id, GraphicCard.all, :id, :model,
+      {:prompt => 'Please select a Graphic Card'}) %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :os_distro_id, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.collection_select( :os_distro_id, OsDistro.all, :id, :version,
+      {:prompt => 'Please select a OS Distro'}) %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :remarks, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_area :remarks, :class => 'text_area' %>
+    </div>
+  </div>
+
+  <div class="form-actions">
+    <%= f.submit nil, :class => 'btn btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                reviews_path, :class => 'btn' %>
+  </div>
+<% end %>

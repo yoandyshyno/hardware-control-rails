@@ -1,0 +1,2 @@
+module WorkstationMonitorsHelper
+end

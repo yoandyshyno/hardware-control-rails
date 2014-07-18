@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  date: 2014-06-12
+  workstation_id: 
+  monitor1: MyString
+  monitor2: MyString
+  monitor3: MyString
+  hardware: MyText
+  graphic_card_id: 
+  os_distro_id: 
+  remarks: MyString
+
+two:
+  date: 2014-06-12
+  workstation_id: 
+  monitor1: MyString
+  monitor2: MyString
+  monitor3: MyString
+  hardware: MyText
+  graphic_card_id: 
+  os_distro_id: 
+  remarks: MyString

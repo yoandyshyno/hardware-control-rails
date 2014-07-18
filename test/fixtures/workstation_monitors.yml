@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  brand: MyString
+  size: 1
+  resolution_width: 1
+  resolution_hight: 1
+  remarks: MyText
+
+two:
+  brand: MyString
+  size: 1
+  resolution_width: 1
+  resolution_hight: 1
+  remarks: MyText
